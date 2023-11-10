@@ -1,10 +1,20 @@
 <?php 
     include "header.php";
+    include "config.php";
+
+    $nome = $_POST["name"];
+    $email = $_POST["email"];
+    $mensagem = $_POST["mensagem"];
+
+    $sql = "INSERT INTO `contato`(`nome`, `email`, `mensagem`) VALUES ('$nome','$email','$mensagem')";
+
+    $inserir = $pdo->prepare($sql);
+    $inserir->execute();
 ?>
 
 <main>
     <h1>Entre em Contato:</h1>
-    <form name="form1" method="post" action="enviar.php">
+    <form name="form1" method="post">
 
         <label for="nome">Seu nome:</label>
         <input type="text" name="nome" id="nome" >
